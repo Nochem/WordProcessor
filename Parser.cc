@@ -16,16 +16,16 @@ void Parser::readdoc(std::string str){
 		std::cout << "Could not open file " << str << std::endl;
 	} else {
 		std::string line;
-		std::string splitter = " ";
+		std::string blankspace = " ";
 		std::string substring;
 		while (getline(infile, line)){
-			std::string::size_type blankspace = line.find(splitter); //Blankspace is the position of the first blankspace
+			std::string::size_type blankspacePos = line.find(blankspace); //Blankspace is the position of the first blankspace
 			while (!line.empty()){
-				if (blankspace != std::string::npos){
-					substring = line.substr(0, blankspace);
+				if (blankspacePos != std::string::npos){
+					substring = line.substr(0, blankspacePos);
 					(*containerPointer).addword(substring);					
 					line.erase(0, blankspace+1);
-					blankspace = line.find(splitter);		
+					blankspacePos = line.find(blankspace);		
 				} else {
 					(*containerPointer).addword(line);
 					line.erase(line.begin(), line.end());
