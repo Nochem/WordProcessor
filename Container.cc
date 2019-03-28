@@ -13,26 +13,21 @@ Container::~Container(){
 
 /* Creates a new node with str as value as long as no such node already exists. */
 void Container::addword(std::string str){
-	Node* current = new Node(str);
 	if (nodes.empty()){
-		nodes.push_back(current);
-		lastNode = current;
+		lastNode = new Node(str);
+		nodes.push_back(lastNode);
 	} else {
-		bool found = false; //Binary search instead. TODO
-		for (unsigned int i = 0; i != nodes.size(); ++i){ 
-			//If the current word exists in the list:
-			if ((*nodes[i]).getvalue() == (*current).getvalue()){
-				//Add the current word as a child of the previous.
-				(*lastNode).addchild(nodes[i]);			
-				//Prepare for the next word.
-				lastNode = nodes[i];
-				//Remove the duplicate node.				
-				delete current;					
+		bool found = false; //Use binary search instead. TODO
+		for (unsigned int i = 0; i != nodes.size(); ++i){
+			if ((*nodes[i]).getvalue() == str){
+				(*lastNode).addchild(nodes[i]);
+				lastNode = nodes[i];							
 				found = true;
 				break;
 			}
 		}
 		if (!found) {
+			Node* current = new Node(str);
 			(*lastNode).addchild(current);	
 			nodes.push_back(current);
 			lastNode = current;
