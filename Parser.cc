@@ -24,7 +24,7 @@ void Parser::readdoc(std::string str){
 				if (blankspacePos != std::string::npos){
 					substring = line.substr(0, blankspacePos);
 					(*containerPointer).addword(substring);					
-					line.erase(0, blankspace+1);
+					line.erase(0, blankspacePos+1);
 					blankspacePos = line.find(blankspace);		
 				} else {
 					(*containerPointer).addword(line);

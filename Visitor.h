@@ -7,7 +7,7 @@
 class Visitor {
 public:
 	Visitor(Container*);
-	void generate();
+	void generate(int);
 private:
 	Container* container;
 

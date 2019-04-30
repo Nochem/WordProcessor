@@ -40,7 +40,7 @@ void Container::printAll(){
 	for (unsigned int i = 0; i!= nodes.size(); ++i){
 		std::cout << (*nodes[i]).getvalue() + " " << std::endl;
 		for (unsigned int v = 0; v != (*nodes[i]).getchildren().size(); ++v){
-			std::cout << "-" << (*nodes[i]).getchildren()[v].node->getvalue() << " " << (*nodes[i]).getchildren()[v].uses << std::endl; //Strange results in Cygwin, TODO
+			std::cout << "└" << (*nodes[i]).getchildren()[v].node->getvalue() << " " << (*nodes[i]).getchildren()[v].uses << std::endl; //Strange results in Cygwin, TODO
 		}
 	}
 }
