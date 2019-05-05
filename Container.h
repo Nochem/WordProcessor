@@ -14,8 +14,10 @@ public:
 	void printAll(); //Exists for testing, remove. TODO
 	std::vector<Node*>::iterator start();
 	std::vector<Node*>::iterator end();
+	Node* firstWordStart();
 private:
 	std::vector<Node*> nodes;
+	std::vector<Node*> firstWord; //Exists to offer a vitistor starting alternatives.
 	Node* lastNode;
 	
 };

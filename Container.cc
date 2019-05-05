@@ -16,6 +16,7 @@ void Container::addword(std::string str){
 	if (nodes.empty()){
 		lastNode = new Node(str);
 		nodes.push_back(lastNode);
+		firstWord.push_back(lastNode);
 	} else {
 		bool found = false; //Use binary search instead. TODO
 		for (unsigned int i = 0; i != nodes.size(); ++i){
@@ -30,6 +31,9 @@ void Container::addword(std::string str){
 			Node* current = new Node(str);
 			(*lastNode).addchild(current);	
 			nodes.push_back(current);
+			if (isupper(str[0])){
+				firstWord.push_back(current);
+			}
 			lastNode = current;
 		}
 	} 
@@ -54,3 +58,11 @@ std::vector<Node*>::iterator Container::end(){
 	return nodes.end();
 }
 
+Node* Container::firstWordStart(){
+	return firstWord[0];
+}
+/*
+std::vector<Node*>::iterator Container::firstWordEnd(){
+	return firstWord.end();
+}
+*/
